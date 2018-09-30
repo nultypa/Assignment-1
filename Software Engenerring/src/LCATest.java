@@ -5,8 +5,13 @@ import org.junit.Test;
 public class LCATest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testForEmptyTree() {
+		
+	}
+	
+	@Test
+	public void testForSize(){
+		
 	}
 
 }
