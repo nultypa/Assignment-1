@@ -28,13 +28,13 @@ public class LCATest {
 		fiveNodes.root.right = new Node(3);
 		fiveNodes.root.left.left = new Node(4);
 		fiveNodes.root.left.right = new Node(5);
+		
 		assertEquals("LCA of of 2 & 3: ", 1, fiveNodes.findLCA(2,3));
 		assertEquals("LCA of of 2 & 4: ", 2, fiveNodes.findLCA(2,4));
-		assertEquals("LCA of of 2 & 5: ", 1, fiveNodes.findLCA(2,5));
+		assertEquals("LCA of of 2 & 5: ", 2, fiveNodes.findLCA(2,5));
 		assertEquals("LCA of of 3 & 4: ", 1, fiveNodes.findLCA(3,4));
 		assertEquals("LCA of of 3 & 5: ", 1, fiveNodes.findLCA(3,5));
 		assertEquals("LCA of of 4 & 5: ", 2, fiveNodes.findLCA(4,5));
-		//Test failed
 	}
 }
  
