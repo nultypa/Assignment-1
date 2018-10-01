@@ -29,42 +29,63 @@ public class LCATest {
 		fiveNodes.root.left.left = new Node(4);
 		fiveNodes.root.left.right = new Node(5);
 		
-		assertEquals("LCA of of 2 & 3: ", 1, fiveNodes.findLCA(2,3));
-		assertEquals("LCA of of 2 & 4: ", 2, fiveNodes.findLCA(2,4));
-		assertEquals("LCA of of 2 & 5: ", 2, fiveNodes.findLCA(2,5));
-		assertEquals("LCA of of 3 & 4: ", 1, fiveNodes.findLCA(3,4));
-		assertEquals("LCA of of 3 & 5: ", 1, fiveNodes.findLCA(3,5));
-		assertEquals("LCA of of 4 & 5: ", 2, fiveNodes.findLCA(4,5));
+		assertEquals("LCA of 2 & 3: ", 1, fiveNodes.findLCA(2,3));
+		assertEquals("LCA of 2 & 4: ", 2, fiveNodes.findLCA(2,4));
+		assertEquals("LCA of 2 & 5: ", 2, fiveNodes.findLCA(2,5));
+		assertEquals("LCA of 3 & 4: ", 1, fiveNodes.findLCA(3,4));
+		assertEquals("LCA of 3 & 5: ", 1, fiveNodes.findLCA(3,5));
+		assertEquals("LCA of 4 & 5: ", 2, fiveNodes.findLCA(4,5));
 	}
 	
 	//Test3 for node size equaling 12
 	@Test
 	public void test3(){
-		LCA sixteenNodes = new LCA();
-		sixteenNodes.root = new Node(1);
-		sixteenNodes.root.left = new Node(2);
-		sixteenNodes.root.right = new Node(3);
-		sixteenNodes.root.left.left = new Node(4);
-		sixteenNodes.root.left.right = new Node(5);
-		sixteenNodes.root.right.left = new Node(6);
-		sixteenNodes.root.right.right = new Node(7);
-		sixteenNodes.root.left.left.left = new Node(8);
-		sixteenNodes.root.left.left.right = new Node(9);
-		sixteenNodes.root.left.right.left = new Node(10);
-		sixteenNodes.root.left.right.right = new Node(11);
-		sixteenNodes.root.right.left.left = new Node(12);
+		LCA twelveNodes = new LCA();
+		twelveNodes.root = new Node(1);
+		twelveNodes.root.left = new Node(2);
+		twelveNodes.root.right = new Node(3);
+		twelveNodes.root.left.left = new Node(4);
+		twelveNodes.root.left.right = new Node(5);
+		twelveNodes.root.right.left = new Node(6);
+		twelveNodes.root.right.right = new Node(7);
+		twelveNodes.root.left.left.left = new Node(8);
+		twelveNodes.root.left.left.right = new Node(9);
+		twelveNodes.root.left.right.left = new Node(10);
+		twelveNodes.root.left.right.right = new Node(11);
+		twelveNodes.root.right.left.left = new Node(12);
 		
-		assertEquals("LCA of of 2 & 3: ", 1, sixteenNodes.findLCA(2,3));
-		assertEquals("LCA of of 2 & 4: ", 2, sixteenNodes.findLCA(2,4));
-		assertEquals("LCA of of 2 & 5: ", 2, sixteenNodes.findLCA(2,5));
-		assertEquals("LCA of of 3 & 4: ", 1, sixteenNodes.findLCA(3,4));
-		assertEquals("LCA of of 3 & 5: ", 1, sixteenNodes.findLCA(3,5));
-		assertEquals("LCA of of 4 & 5: ", 2, sixteenNodes.findLCA(4,5));
-		assertEquals("LCA of of 4 & 7: ", 1, sixteenNodes.findLCA(4,7));
-		assertEquals("LCA of of 8 & 9: ", 4, sixteenNodes.findLCA(8,9));
-		assertEquals("LCA of of 5 & 8: ", 2, sixteenNodes.findLCA(5,8));
-		assertEquals("LCA of of 9 & 10: ", 2, sixteenNodes.findLCA(9,10));
-		assertEquals("LCA of of 11 & 12: ", 1, sixteenNodes.findLCA(11,12));
+		assertEquals("LCA of 2 & 3: ", 1, twelveNodes.findLCA(2,3));
+		assertEquals("LCA of 2 & 4: ", 2, twelveNodes.findLCA(2,4));
+		assertEquals("LCA of 2 & 5: ", 2, twelveNodes.findLCA(2,5));
+		assertEquals("LCA of 3 & 4: ", 1, twelveNodes.findLCA(3,4));
+		assertEquals("LCA of 3 & 5: ", 1, twelveNodes.findLCA(3,5));
+		assertEquals("LCA of 4 & 5: ", 2, twelveNodes.findLCA(4,5));
+		assertEquals("LCA of 4 & 7: ", 1, twelveNodes.findLCA(4,7));
+		assertEquals("LCA of 8 & 9: ", 4, twelveNodes.findLCA(8,9));
+		assertEquals("LCA of 5 & 8: ", 2, twelveNodes.findLCA(5,8));
+		assertEquals("LCA of 9 & 10: ", 2, twelveNodes.findLCA(9,10));
+		assertEquals("LCA of 11 & 12: ", 1, twelveNodes.findLCA(11,12));
 	}
-}
+	
+
+	//Test4 for non existent nodes
+	@Test
+	public void test4(){
+		LCA nonExistentNode = new LCA();
+		nonExistentNode.root = new Node(1);
+		nonExistentNode.root.left = new Node(2);
+		nonExistentNode.root.right = new Node(3);
+		nonExistentNode.root.left.left = new Node(4);
+		nonExistentNode.root.left.right = new Node(5);
+		nonExistentNode.root.right.left = new Node(6);
+		nonExistentNode.root.right.right = new Node(7);
+		nonExistentNode.root.left.left.left = new Node(8);
+		nonExistentNode.root.left.left.right = new Node(9);
+		nonExistentNode.root.left.right.left = new Node(10);
+		
+		assertEquals("LCA of 11 & 12: ", -1, nonExistentNode.findLCA(11,12));
+		assertEquals("LCA of 22 & 32: ", -1, nonExistentNode.findLCA(22,32));
+		assertEquals("LCA of 100 & 2: ", -1, nonExistentNode.findLCA(100,2));
+		}
+	}
  
