@@ -83,9 +83,31 @@ public class LCATest {
 		nonExistentNode.root.left.left.right = new Node(9);
 		nonExistentNode.root.left.right.left = new Node(10);
 		
+		//Ancestry node that does not exist
 		assertEquals("LCA of 11 & 12: ", -1, nonExistentNode.findLCA(11,12));
 		assertEquals("LCA of 22 & 32: ", -1, nonExistentNode.findLCA(22,32));
 		assertEquals("LCA of 100 & 2: ", -1, nonExistentNode.findLCA(100,2));
-		}
 	}
+	
+	
+	//Test5 will test when node of ancestor of another number
+	@Test
+	public void test5(){
+		LCA ancestorNode = new LCA();
+		ancestorNode.root = new Node(44);
+		ancestorNode.root.left = new Node(72);
+		ancestorNode.root.right = new Node(39);
+		ancestorNode.root.left.left = new Node(3);
+		ancestorNode.root.left.right = new Node(11);
+		ancestorNode.root.right.left = new Node(99);
+		ancestorNode.root.right.right = new Node(1);
+		
+		assertEquals("LCA of 72 & 39: ", 44, ancestorNode.findLCA(72,39));
+		assertEquals("LCA of 3 & 1: ", 44, ancestorNode.findLCA(3,1));
+		assertEquals("LCA of 99 & 1: ", 39, ancestorNode.findLCA(99,1));
+		assertEquals("LCA of 72 & 11: ", 72, ancestorNode.findLCA(72,11));
+		assertEquals("LCA of 72 & 99: ", 1, ancestorNode.findLCA(72,99));
+		//Test 5 failure
+	}
+}
  
