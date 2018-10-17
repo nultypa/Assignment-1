@@ -107,7 +107,6 @@ public class LCATest {
 		assertEquals("LCA of 99 & 1: ", 39, ancestorNode.findLCA(99,1));
 		assertEquals("LCA of 72 & 11: ", 72, ancestorNode.findLCA(72,11));
 		assertEquals("LCA of 72 & 99: ", 44, ancestorNode.findLCA(72,99));
-		//Test 5 failure
 	}
 }
  
