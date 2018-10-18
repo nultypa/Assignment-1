@@ -92,7 +92,8 @@ public class DAG {
 		return adj[v]; 
 	}
 	
-	public void findCycle(int v) {
+	public void findCycle(int v) 
+	{
 
         marked[v] = true;
         ordV[v] = true;
@@ -116,6 +117,61 @@ public class DAG {
         return cycle;
     }
 	
+	public DAG backward() {
+        DAG reverse = new DAG(numV);
+        for (int v = 0; v < numV; v++)
+        {
+            for (int w : adj(v)) 
+            {
+                reverse.addEdge(w, v);
+            }
+        }
+        return reverse;
+    }
 	
+	public int findLCA(int v, int w)
+	{
+		findCycle(0);
+		if(cycle)
+		{
+			return -1;
+		}
+		if(validateV(v)<0||validateV(v)<0)
+		{
+			return -1;
+		}
+		if(numE==0)
+		{
+			return -1;
+		}
+		DAG backward = backward();
+		ArrayList<Integer> a1 = backward.BFS(v);
+		ArrayList<Integer> a2 = backward.BFS(w);
+		ArrayList<Integer> commonAncestor = new ArrayList<Integer>();
+		boolean found = false;
+		for(int i = 0; i < a1.size(); i++){
+				for(int t = 0; t<a2.size(); t++)
+				{		
+					if(a1.get(i) == a2.get(t))
+					{
+						commonAncestor.add(a1.get(i));	
+						found = true;
+					}
+			}
+		}
+		
+		if(found)
+		{
+			return commonAncestor.get(0);
+		}
+		else
+		{
+			return -1;
+		}
+	}
+	public ArrayList<Integer> BFS()
+    {
+		
+    }
 
 }
