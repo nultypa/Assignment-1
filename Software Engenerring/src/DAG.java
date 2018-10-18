@@ -22,8 +22,10 @@ public class DAG {
 	    marked = new boolean[numV];
 	    ordV = new boolean[numV];
 	    adj = (ArrayList<Integer>[]) new ArrayList[numV];
-	    for (int v = 0; v < numV; v++) {
-	    adj[v] = new ArrayList<Integer>(); 
+	    
+	    for (int v = 0; v < numV; v++) 
+	    {
+	    	adj[v] = new ArrayList<Integer>(); 
 	    }
 	}
 	
@@ -37,36 +39,59 @@ public class DAG {
 		return numV;
 	}
 	
-	private int validateVertex(int v) 
+	private int validateV(int v) 
 	{
         if (v < 0 || v >= numV)
+        {
         	return -1;
-        else
+        }
+       	else
         	return 1;
     }
 	
 	public int indegreeV(int v) 
 	{
-		if(validateVertex(v)<0){
+		if(validateV(v)<0){
 			return -1;
 		}
-		else{
+		else
+		{
 			return indegreeV[v];
+		}
+	}
+	
+	public int outdegree(int v) 
+	{
+		if(validateV(v)<0)
+		{
+			return -1;
+		}
+		else
+		{
+			return adj[v].size();
 		}
 	}
 	
 	public void addEdge(int v, int w)
 	{
-	    if((validateVertex(v)>0)&&(validateVertex(w)>0))
+	    if((validateV(v)>0)&&(validateV(w)>0))
 	    {
 	    	adj[v].add(w);
 	    	indegreeV[w]++;
 	    	numE++;
 	    }
-	    else{
+	    else
+	    {
 	    	System.out.println("Enter vertices between 0 & n-1");
 	    }
 	    	
 	}
+	
+	public Iterable<Integer> adj(int v)
+	{ 
+		return adj[v]; 
+	}
+	
+	
 
 }
