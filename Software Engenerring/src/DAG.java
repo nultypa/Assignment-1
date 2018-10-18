@@ -92,6 +92,30 @@ public class DAG {
 		return adj[v]; 
 	}
 	
+	public void findCycle(int v) {
+
+        marked[v] = true;
+        ordV[v] = true;
+
+        for (int w : adj(v)) {
+            if(!marked[w]) 
+            {
+                findCycle(w);
+            } 
+            else if (ordV[w]) 
+            {
+                cycle = true;
+                return;
+            }
+        }
+        ordV[v] = false;
+    }
+	
+	public boolean cycle() 
+	{
+        return cycle;
+    }
+	
 	
 
 }
