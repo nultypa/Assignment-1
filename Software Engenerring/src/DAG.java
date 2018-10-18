@@ -13,8 +13,9 @@ public class DAG {
 	private boolean cycle;		    
 	private boolean ordV[];	
 	
-	public DAG(int numV){
-		if (numV < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+	public DAG(int numV)
+	{
+		if (numV < 0) throw new IllegalArgumentException("A Digraph must have a nonnegative number of vertices");
 	    this.numV = numV;
 	    this.numE = 0;
 	    indegreeV = new int[numV];
@@ -24,6 +25,48 @@ public class DAG {
 	    for (int v = 0; v < numV; v++) {
 	    adj[v] = new ArrayList<Integer>(); 
 	    }
+	}
+	
+	public int numE()
+	{
+		return numE;
+	}
+	
+	public int numV()
+	{
+		return numV;
+	}
+	
+	private int validateVertex(int v) 
+	{
+        if (v < 0 || v >= numV)
+        	return -1;
+        else
+        	return 1;
+    }
+	
+	public int indegreeV(int v) 
+	{
+		if(validateVertex(v)<0){
+			return -1;
+		}
+		else{
+			return indegreeV[v];
+		}
+	}
+	
+	public void addEdge(int v, int w)
+	{
+	    if((validateVertex(v)>0)&&(validateVertex(w)>0))
+	    {
+	    	adj[v].add(w);
+	    	indegreeV[w]++;
+	    	numE++;
+	    }
+	    else{
+	    	System.out.println("Enter vertices between 0 & n-1");
+	    }
+	    	
 	}
 
 }
