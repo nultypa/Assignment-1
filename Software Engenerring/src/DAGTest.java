@@ -23,19 +23,33 @@ import static org.junit.Assert.assertEquals;
  		assertEquals("",ans, test.adj(4).toString());
  	}
  	
- 	//Test for empty tree
- 	@Test
- 	public void test2()
- 	{
- 		
- 	}
+ 	//Test for out degree
+	@Test
+	public void test2()
+	{
+		DAG out = new DAG(5);
+		out.addEdge(0, 1);
+		out.addEdge(0, 2);
+		out.addEdge(1, 2);
+		
+		assertEquals("", -1, out.outdegree(8));	
+		assertEquals("", 2, out.outdegree(0));	
+		assertEquals("", 0, out.outdegree(2));
+	}
  	
- 	//Test Tree 1 vertex
- 	@Test
- 	public void test3()
- 	{
- 		
- 	}
+ 	//Test for indegree
+	@Test
+	public void test3()
+	{
+		DAG in = new DAG(5);
+		in.addEdge(0, 1);
+		in.addEdge(0, 2);
+		in.addEdge(1, 2);
+		
+		assertEquals("", -1, in.indegreeV(-3));
+		assertEquals("", 1, in.indegreeV(1));
+		assertEquals("", 2, in.indegreeV(2));
+	}
  	
  	//Test for non existing vertices
  	@Test
