@@ -51,10 +51,12 @@ import static org.junit.Assert.assertEquals;
 		assertEquals("", 2, in.indegreeV(2));
 	}
  	
- 	//Test for non existing vertices
+ 	//Test for adding edges
  	@Test
  	public void test4()
  	{
- 		
+ 		DAG add = new DAG(5);
+		add.addEdge(3, 9);
+		add.addEdge(-2, -5);	
  	} 	
  }
