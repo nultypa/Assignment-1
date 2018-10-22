@@ -118,15 +118,15 @@ public class DAG {
     }
 	
 	public DAG backward() {
-        DAG reverse = new DAG(numV);
+        DAG backward = new DAG(numV);
         for (int v = 0; v < numV; v++)
         {
             for (int w : adj(v)) 
             {
-                reverse.addEdge(w, v);
+            	backward.addEdge(w, v);
             }
         }
-        return reverse;
+        return backward;
     }
 	
 	public int findLCA(int v, int w)
@@ -144,9 +144,9 @@ public class DAG {
 		{
 			return -1;
 		}
-		DAG backward = backward();
-		ArrayList<Integer> a1 = backward.BFS(v);
-		ArrayList<Integer> a2 = backward.BFS(w);
+		DAG reverse = backward();
+		ArrayList<Integer> a1 = reverse.BFS(v);
+		ArrayList<Integer> a2 = reverse.BFS(w);
 		ArrayList<Integer> commonAncestor = new ArrayList<Integer>();
 		boolean found = false;
 		for(int i = 0; i < a1.size(); i++){
@@ -169,9 +169,30 @@ public class DAG {
 			return -1;
 		}
 	}
-	public ArrayList<Integer> BFS()
+	void BFS(int s)
     {
-		
+        boolean visited[] = new boolean[numV];
+ 
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+ 
+        visited[s]=true;
+        queue.add(s);
+ 
+        while (queue.size() != 0)
+        {
+            s = queue.poll();
+            System.out.print(s+" ");
+            Iterator<Integer> i = adj[s].listIterator();
+            while (i.hasNext())
+            {
+                int t = i.next();
+                if (!visited[t])
+                {
+                    visited[t] = true;
+                    queue.add(t);
+                }
+            }
+        }
     }
 
 }
