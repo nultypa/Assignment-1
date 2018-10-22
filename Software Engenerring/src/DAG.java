@@ -169,11 +169,13 @@ public class DAG {
 			return -1;
 		}
 	}
-	void BFS(int s)
+	public ArrayList<Integer> BFS(int s)
     {
         boolean visited[] = new boolean[numV];
  
-        LinkedList<Integer> queue = new LinkedList<Integer>();
+        LinkedList<Integer> queue = new LinkedList<Integer>();        
+        ArrayList<Integer> order = new ArrayList<Integer>();
+
  
         visited[s]=true;
         queue.add(s);
@@ -181,7 +183,7 @@ public class DAG {
         while (queue.size() != 0)
         {
             s = queue.poll();
-            System.out.print(s+" ");
+            order.add(s);
             Iterator<Integer> i = adj[s].listIterator();
             while (i.hasNext())
             {
@@ -193,6 +195,8 @@ public class DAG {
                 }
             }
         }
+    return order;
     }
+	
 
 }
