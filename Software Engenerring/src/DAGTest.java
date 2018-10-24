@@ -63,11 +63,14 @@ import org.junit.Test;
  	//Test for cycle
  	@Test
  	public void test5(){
-			DAG cyclical = new DAG(5);
-			cyclical.addEdge(0, 1);
-			cyclical.addEdge(1, 2);
-			cyclical.addEdge(2, 0);
-			assertTrue(cyclical.cycle());
+		DAG cyclical = new DAG(20);
+		cyclical.addEdge(0, 1);
+		cyclical.addEdge(1, 2);
+		cyclical.addEdge(2, 0);
+		cyclical.addEdge(2, 3);
+		cyclical.addEdge(3, 4);
+		cyclical.findCycle(0);
+		assertTrue(cyclical.cycle());
 	}
 	
  	//Test for acyclic graph
