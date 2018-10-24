@@ -82,4 +82,23 @@ import org.junit.Test;
 			acyclic.addEdge(2, 3);
 			assertFalse(acyclic.cycle());
 	}
+	public void testLCA(){
+ 		DAG lca = new DAG(9);
+ 		lca.addEdge(0, 1);
+ 		lca.addEdge(0, 2);
+ 		lca.addEdge(1, 3);
+ 		lca.addEdge(1, 4);
+ 		lca.addEdge(2, 5);
+ 		lca.addEdge(3, 6);
+ 		lca.addEdge(4, 6);
+ 		lca.addEdge(5, 6);
+ 		lca.addEdge(6, 7);
+ 		lca.addEdge(2, 8); 		
+ 		lca.addEdge(7, 9);
+ 		lca.addEdge(8, 9);
+ 		
+ 		assertEquals("", 0, lca.findLCA(1, 3));
+ 		assertEquals("", 2, lca.findLCA(6, 8));
+ 		assertEquals("", 8, lca.findLCA(8, 9));
+	}
  }
