@@ -148,5 +148,15 @@ import org.junit.Test;
 		assertEquals("", -1, lca.findLCA(0, 7));
 		assertEquals("", -1, lca.findLCA(0, 9));
 	}
-	
+	//Test LCA for same vertex
+	@Test
+	public void test11(){
+		DAG lca = new DAG(15);
+		lca.addEdge(0, 1);
+		lca.addEdge(1, 2);
+		lca.addEdge(1, 3);
+		lca.addEdge(2, 3);
+		
+		assertEquals("", 2, lca.findLCA(2, 2));
+	}
  }
