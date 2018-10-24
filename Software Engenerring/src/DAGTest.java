@@ -1,6 +1,6 @@
-import static org.junit.Assert.assertEquals;
-
- import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.ArrayList;
+import org.junit.Test;
 
  public class DAGTest {
  	
@@ -59,4 +59,24 @@ import static org.junit.Assert.assertEquals;
 		add.addEdge(3, 9);
 		add.addEdge(-2, -5);	
  	} 	
+ 	
+ 	//Test for cycle
+ 	@Test
+ 	public void test5(){
+			DAG cyclical = new DAG(5);
+			cyclical.addEdge(0, 1);
+			cyclical.addEdge(1, 2);
+			cyclical.addEdge(2, 0);
+			assertTrue(cyclical.cycle());
+	}
+	
+ 	//Test for acyclic graph
+	@Test
+	public void test6(){
+			DAG acyclic = new DAG(5);
+			acyclic.addEdge(0, 1);
+			acyclic.addEdge(1, 2);
+			acyclic.addEdge(2, 3);
+			assertFalse(acyclic.cycle());
+	}
  }
