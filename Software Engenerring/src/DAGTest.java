@@ -124,4 +124,29 @@ import org.junit.Test;
  		assertEquals("", -1, lca.findLCA(11, 10));
  	}
 	
+	//Test for non DAG
+	@Test
+	public void test9(){
+		DAG lca = new DAG(11);
+		lca.addEdge(0, 1);
+		lca.addEdge(0, 2);
+		lca.addEdge(2, 3);
+		lca.addEdge(3, 0);
+		lca.addEdge(3, 4);
+		
+		assertEquals("", -1, lca.findLCA(2, 3));
+		assertEquals("", -1, lca.findLCA(3, 4));
+		assertEquals("", -1, lca.findLCA(1, 2));
+		assertEquals("", -1, lca.findLCA(0, 3));
+		assertEquals("", -1, lca.findLCA(1, 3));
+	}
+	//Test for empty DAG
+	@Test
+	public void test10(){
+		DAG lca = new DAG(3);
+		assertEquals("", -1, lca.findLCA(0, 0));
+		assertEquals("", -1, lca.findLCA(0, 7));
+		assertEquals("", -1, lca.findLCA(0, 9));
+	}
+	
  }
